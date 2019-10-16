@@ -1,9 +1,9 @@
 <template>
   <div class="header-bar">
     <Row>
-      <Col :xs="1" > <sider-trigger :collapsed="collapsed" icon="md-menu" @on-change="handleCollpasedChange"></sider-trigger></Col>
-      <Col  :xs="0" :sm="0" :md="12" :lg="11"><custom-bread-crumb show-icon style="margin-left: 30px;" :list="breadCrumbList"></custom-bread-crumb></Col>
-      <Col :xs="21" :sm="21" :md="11" :lg="11">  <div class="custom-content-con">
+      <Col :xs="2" :sm="1" > <sider-trigger :collapsed="collapsed" icon="md-menu" @on-change="handleCollpasedChange"></sider-trigger></Col>
+      <Col  :xs="0" :sm="0" :md="10" ><custom-bread-crumb show-icon style="margin-left: 30px;" :list="breadCrumbList"></custom-bread-crumb></Col>
+      <Col :xs="20" :sm="22" :md="12" >  <div class="custom-content-con">
         <slot></slot>
       </div></Col>
     </Row>

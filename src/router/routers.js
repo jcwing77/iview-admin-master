@@ -429,6 +429,15 @@ export default [
           title: '角色'
         },
         component: () => import('@/view/multilevel/roles.vue')
+      },
+      {
+        path: 'users',
+        name: 'users',
+        meta: {
+          icon: 'md-funnel',
+          title: '用户'
+        },
+        component: () => import('@/view/multilevel/users.vue')
       }
     ]
   },

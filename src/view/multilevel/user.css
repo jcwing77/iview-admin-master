@@ -1,0 +1,79 @@
+.size {
+  font-size: 14px;
+}
+.mt-20 {
+  margin-top: 20px ;
+}
+.backgroundfont {
+  background: #fff;
+  border: 1px solid #dcdee2;
+  border-radius: 5px;
+  overflow: visible;
+}
+.rolestitle {
+  background: #fff;
+  border: 1px solid #dcdee2;
+  border-radius: 5px;
+  overflow: visible;
+  margin: -20px -18px 0 -18px;
+  padding: 5px 0px;
+  overflow: hidden;
+  line-height: 40px;
+}
+.rolestitle h3 {
+  font-size: 16px;
+  padding-left: 1rem;
+  font-weight: normal;
+}
+.rolestitle h3 i {
+  padding: 0 10px;
+  color: #e7e8ef;
+}
+.rolestitle h3 span {
+  color: #959cb6;
+  font-size: 12px;
+}
+.rolesContent {
+  margin-top: 20px;
+  padding: 30px;
+  background: #fff;
+  border: 1px solid #dcdee2;
+  border-radius: 5px;
+  overflow: visible;
+}
+.refreshbtn {
+  text-align: right;
+}
+.rolesTable {
+  margin-top: 20px;
+}
+.rolesTable th {
+  font-size: 14px;
+}
+.rolesTable strong {
+  font-size: 14px;
+}
+.roles .ivu-table-wrapper {
+  overflow: visible;
+}
+.tag {
+  background: #2b85e4;
+  padding: 2px 6px;
+  margin-left: 5px;
+  color: #fff;
+  border-radius: 3px;
+  display: inline-block;
+  font-size: 12px;
+  font-weight: normal;
+}
+.tag1 {
+  background: #17233d;
+}
+.addbtn {
+  text-align: right;
+}
+.highFilter {
+  float: left;
+  width: 100%;
+  margin-top: 30px;
+}

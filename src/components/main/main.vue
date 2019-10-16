@@ -66,7 +66,8 @@ export default {
       collapsed: false,
       minLogo,
       maxLogo,
-      isFullscreen: false
+      isFullscreen: false,
+      screenWidth: ''
     }
   },
   computed: {
@@ -112,6 +113,14 @@ export default {
       'handleLogin',
       'getUnreadMessageCount'
     ]),
+    widthChange (width) {
+      //  宽度小于750px，将左侧菜单设置为icon菜单
+      if (width < 750) {
+        this.collapsed = true
+      } else {
+        this.collapsed = false
+      }
+    },
     turnToPage (route) {
       let { name, params, query } = {}
       if (typeof route === 'string') name = route
@@ -182,6 +191,18 @@ export default {
     }
     // 获取未读消息条数
     this.getUnreadMessageCount()
+    // 监听浏览器窗口宽度
+    this.screenWidth = document.body.clientWidth
+
+    window.onresize = () => {
+      return (() => {
+        this.screenWidth = document.body.clientWidth
+
+        // 如果屏幕宽度小于750px，则左侧导航菜单收起变小icon菜单
+        this.widthChange(this.screenWidth)
+      })()
+    }
+    this.widthChange(this.screenWidth)
   }
 }
 </script>

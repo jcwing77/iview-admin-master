@@ -1,6 +1,6 @@
 <template>
   <div class="roles">
-    <Row class="rolestitle">
+    <Row class="secondtitle">
       <Col :xs="{span:23,push:1}" :sm="{span:17,push:1}">
         <h3>
           用户
@@ -43,7 +43,8 @@
       <Col :xs="24">
         <Button style="margin-top:20px" @click="showHighFilter">
           <Icon type="ios-arrow-up" v-show="highFiltershow" />
-          <Icon type="ios-arrow-down" v-show="!highFiltershow" />隐藏高级过滤
+          <Icon type="ios-arrow-down" v-show="!highFiltershow" />
+          {{highFiltershow?'隐藏高级过滤':'显示高级过滤'}}
         </Button>
       </Col>
       <Col :xs="24" class="rolesTable">

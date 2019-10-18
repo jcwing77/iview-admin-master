@@ -1,6 +1,6 @@
 <template>
   <div class="roles">
-    <Row class="rolestitle">
+    <Row class="secondtitle">
       <Col :xs="{span:23,push:1}" :sm="{span:17,push:1}">
         <h3>
           角色
@@ -107,6 +107,16 @@ export default {
     }
   },
   methods: {
+    refreshData () {
+      // 刷新按钮
+      let that = this
+
+      this.loading1 = true
+
+      setTimeout(function () {
+        that.loading1 = false
+      }, 1500)
+    },
     ok () {
       this.$Message.info('Clicked ok')
     },

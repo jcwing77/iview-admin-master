@@ -6,13 +6,13 @@
 }
 .backgroundfont {
   background: #fff;
-  border: 1px solid #dcdee2;
+  box-shadow: 1px 1px 1px #dcdee2;
   border-radius: 5px;
   overflow: visible;
 }
-.rolestitle {
+.secondtitle {
   background: #fff;
-  border: 1px solid #dcdee2;
+  box-shadow: 1px 1px 1px #dcdee2;
   border-radius: 5px;
   overflow: visible;
   margin: -20px -18px 0 -18px;
@@ -20,16 +20,16 @@
   overflow: hidden;
   line-height: 40px;
 }
-.rolestitle h3 {
+.secondtitle h3 {
   font-size: 16px;
   padding-left: 1rem;
   font-weight: normal;
 }
-.rolestitle h3 i {
+.secondtitle h3 i {
   padding: 0 10px;
   color: #e7e8ef;
 }
-.rolestitle h3 span {
+.secondtitle h3 span {
   color: #959cb6;
   font-size: 12px;
 }
@@ -37,7 +37,7 @@
   margin-top: 20px;
   padding: 30px;
   background: #fff;
-  border: 1px solid #dcdee2;
+  box-shadow: 1px 1px 1px #dcdee2;
   border-radius: 5px;
   overflow: visible;
 }

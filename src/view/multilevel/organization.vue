@@ -1,111 +1,114 @@
 <template>
-  <div class="otree">
-    <Row class="secondtitle">
-      <Col :xs="{span:23,push:1}" :sm="{span:17,push:1}">
-        <h3>
-          Organization Units
-          <i>|</i>
-          <span>应用组织机构和行政区划到用户和实体</span>
-        </h3>
-      </Col>
-    </Row>
-    <Row class="otreeContent mt-20">
-      <!-- 左侧组织结构图 -->
-      <Col :xs="24" :sm="{span:12}">
-        <div class="treeleft">
-          <div class="treehead">
+    <Form ref="formValidate" :model="formValidate" :rules="ruleValidate" :label-width="80">
+        <FormItem label="Name" prop="name">
+            <Input v-model="formValidate.name" placeholder="Enter your name"></Input>
+        </FormItem>
+        <FormItem label="E-mail" prop="mail">
+            <Input v-model="formValidate.mail" placeholder="Enter your e-mail"></Input>
+        </FormItem>
+        <FormItem label="City" prop="city">
+            <Select v-model="formValidate.city" placeholder="Select your city">
+                <Option value="beijing">New York</Option>
+                <Option value="shanghai">London</Option>
+                <Option value="shenzhen">Sydney</Option>
+            </Select>
+        </FormItem>
+        <FormItem label="Date">
             <Row>
-              <Col :xs="24">组织结构树</Col>
-              <Col :xs="24" >
-                <Button type="primary" size="small" icon="md-add">添加根组织</Button>
-                <Button type="primary" size="small" icon="md-add">添加子组织</Button>
-                <Button type="primary" size="small" icon="md-create">修改</Button>
-                <Button type="primary" size="small" icon="md-trash">删除</Button>
-              </Col>
+                <Col span="11">
+                    <FormItem prop="date">
+                        <DatePicker type="date" placeholder="Select date" v-model="formValidate.date"></DatePicker>
+                    </FormItem>
+                </Col>
+                <Col span="2" style="text-align: center">-</Col>
+                <Col span="11">
+                    <FormItem prop="time">
+                        <TimePicker type="time" placeholder="Select time" v-model="formValidate.time"></TimePicker>
+                    </FormItem>
+                </Col>
             </Row>
-          </div>
-          <Tree :data="otreedata" @on-select-change="selectItem"></Tree>
-        </div>
-      </Col>
-      <!-- 右侧组织成员 -->
-      <Col :xs="24" :sm="{span:12}">
-        <div class="treeright">
-          <div class="treehead">Quality Management</div>
-
-        </div>
-      </Col>
-    </Row>
-  </div>
+        </FormItem>
+        <FormItem label="Gender" prop="gender">
+            <RadioGroup v-model="formValidate.gender">
+                <Radio label="male">Male</Radio>
+                <Radio label="female">Female</Radio>
+            </RadioGroup>
+        </FormItem>
+        <FormItem label="Hobby" prop="interest">
+            <CheckboxGroup v-model="formValidate.interest">
+                <Checkbox label="Eat"></Checkbox>
+                <Checkbox label="Sleep"></Checkbox>
+                <Checkbox label="Run"></Checkbox>
+                <Checkbox label="Movie"></Checkbox>
+            </CheckboxGroup>
+        </FormItem>
+        <FormItem label="Desc" prop="desc">
+            <Input v-model="formValidate.desc" type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="Enter something..."></Input>
+        </FormItem>
+        <FormItem>
+            <Button type="primary" @click="handleSubmit('formValidate')">Submit</Button>
+            <Button @click="handleReset('formValidate')" style="margin-left: 8px">Reset</Button>
+        </FormItem>
+    </Form>
 </template>
 <script>
 export default {
-  name: 'organization_page',
   data () {
     return {
-      otreedata: [
-        {
-          title: 'parent 1',
-          expand: true,
-          children: [
-            {
-              title: 'parent 1-1',
-              expand: true,
-              children: [
-                {
-                  title: 'leaf 1-1-1'
-                },
-                {
-                  title: 'leaf 1-1-2'
-                }
-              ]
-            },
-            {
-              title: 'parent 1-2',
-              expand: true,
-              children: [
-                {
-                  title: 'leaf 1-2-1'
-                },
-                {
-                  title: 'leaf 1-2-1'
-                }
-              ]
-            }
-          ]
-        }
-      ]
+      formValidate: {
+        name: '',
+        mail: '',
+        city: '',
+        gender: '',
+        interest: [],
+        date: '',
+        time: '',
+        desc: ''
+      },
+      ruleValidate: {
+        name: [
+          { required: true, message: 'The name cannot be empty', trigger: 'blur' }
+        ],
+        mail: [
+          { required: true, message: 'Mailbox cannot be empty', trigger: 'blur' },
+          { type: 'email', message: 'Incorrect email format', trigger: 'blur' }
+        ],
+        city: [
+          { required: true, message: 'Please select the city', trigger: 'change' }
+        ],
+        gender: [
+          { required: true, message: 'Please select gender', trigger: 'change' }
+        ],
+        interest: [
+          { required: true, type: 'array', min: 1, message: 'Choose at least one hobby', trigger: 'change' },
+          { type: 'array', max: 2, message: 'Choose two hobbies at best', trigger: 'change' }
+        ],
+        date: [
+          { required: true, type: 'date', message: 'Please select the date', trigger: 'change' }
+        ],
+        time: [
+          { required: true, type: 'string', message: 'Please select time', trigger: 'change' }
+        ],
+        desc: [
+          { required: true, message: 'Please enter a personal introduction', trigger: 'blur' },
+          { type: 'string', min: 20, message: 'Introduce no less than 20 words', trigger: 'blur' }
+        ]
+      }
     }
   },
   methods: {
-    selectItem (selectedArr, selectedItem) {
-      console.log(selectedArr, selectedItem, 3333)
+    handleSubmit (name) {
+      this.$refs[name].validate((valid) => {
+        if (valid) {
+          this.$Message.success('Success!')
+        } else {
+          this.$Message.error('Fail!')
+        }
+      })
+    },
+    handleReset (name) {
+      this.$refs[name].resetFields()
     }
   }
 }
 </script>
-<style lang="less">
-@import url("./user.less");
-// 组织架构
-.otree .ivu-tree ul {
-  font-size: @fontsize;
-}
-.headborder{
-    border-bottom: 1px solid #f2f2f2;
-}
-.treeleft,
-.treeright {
-  .backgroundfont;
-  padding: 10px;
-  margin: 10px;
-}
-.treehead {
-  font-size: @fontsize;
-.headborder;
-  line-height: 30px;
-  padding-bottom: 5px;
-  overflow: hidden;
-  .ivu-btn{
-     margin: 3px 3px 0 3px ;
-  }
-}
-</style>
